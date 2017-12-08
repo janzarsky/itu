@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class QuestionAnimal
+class QuestionAnimal extends Model
 {
     use SoftDeletes;
 
