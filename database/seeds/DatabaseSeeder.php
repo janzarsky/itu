@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
         $qa->save();
 
         $q = new Question;
-        $q->type = 'choose_description_from_name';
+        $q->type = 'choose_name_from_description';
         $q->save();
 
         $qa = new QuestionAnimal;
@@ -93,6 +93,28 @@ class DatabaseSeeder extends Seeder
         $qa->position = 3;
         $qa->save();
 
+        $q = new Question;
+        $q->type = 'choose_name_from_description';
+        $q->save();
+
+        $qa = new QuestionAnimal;
+        $qa->question_id = 3;
+        $qa->animal_id = 2;
+        $qa->position = 1;
+        $qa->save();
+
+        $qa = new QuestionAnimal;
+        $qa->question_id = 3;
+        $qa->animal_id = 3;
+        $qa->position = 2;
+        $qa->save();
+
+        $qa = new QuestionAnimal;
+        $qa->question_id = 3;
+        $qa->animal_id = 1;
+        $qa->position = 3;
+        $qa->save();
+
         // Tests
         $t = new Test;
         $t->name = 'Domácí zvířata';
@@ -109,6 +131,12 @@ class DatabaseSeeder extends Seeder
         $tq->test_id = 1;
         $tq->question_id = 2;
         $tq->position = 2;
+        $tq->save();
+
+        $tq = new TestQuestion;
+        $tq->test_id = 1;
+        $tq->question_id = 3;
+        $tq->position = 3;
         $tq->save();
 
         // Results
