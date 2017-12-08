@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Animal
 {
