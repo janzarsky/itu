@@ -16,7 +16,7 @@ class CreateAnimalsTable extends Migration
         Schema::create('animals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('decription');
+            $table->longText('description');
             $table->timestamps();
             $table->softDeletes();
         });
