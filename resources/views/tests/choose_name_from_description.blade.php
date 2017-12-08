@@ -2,13 +2,15 @@
 
 @section('question')
 
-<h2>Vyber zvíře odpovídající popisu</h2>
-
-<p>
-{{ $animals[0]->description }}
-</p>
-
-<ul>
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                {{ $animals[0]->description }}
+            </div>
+        </div>
+    </div>
+</div>
 
 @php
     if ($animal_id === -1) {
@@ -19,20 +21,28 @@
     }
 @endphp
 
+<div class="row">
+
 @foreach ($shuffled as $a)
-<li>
-    @if ($animal_id === -1)
-        <a href="{{ route('tests.answer', ['id' => $test->id,
-                 'question_num' => $question->position,
-                 'animal_id' => $a->id]) }}">
-            {{ $a->name }}</a>
-    @elseif ($loop->first)
-        Správná odpověď: {{ $a->name }}
-    @else
-        {{ $a->name }}
-    @endif
-</li>
+<div class="col-md-4">
+    <a href="{{ route('tests.answer', ['id' => $test->id,
+             'question_num' => $question->position,
+             'animal_id' => $a->id]) }}">
+        <div class="card">
+            <div class="card-body">
+            @if ($animal_id === -1)
+                    {{ $a->name }}
+            @elseif ($loop->first)
+                Správná odpověď: {{ $a->name }}
+            @else
+                {{ $a->name }}
+            @endif
+            </div>
+        </div>
+    </a>
+</div>
 @endforeach
-</ul>
+
+</div>
 
 @endsection
