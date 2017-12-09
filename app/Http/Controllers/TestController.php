@@ -62,6 +62,8 @@ class TestController extends Controller
         switch ($vals['question']->type) {
         case 'choose_name_from_description':
             return view('tests.choose_name_from_description', $vals);
+        case 'choose_description_from_name':
+            return view('tests.choose_description_from_name', $vals);
         default:
             return 'unknown question type';
         }
@@ -121,6 +123,8 @@ class TestController extends Controller
         switch ($vals['question']->type) {
         case 'choose_name_from_description':
             return view('tests.choose_name_from_description_answer', $vals);
+        case 'choose_description_from_name':
+            return view('tests.choose_description_from_name_answer', $vals);
         default:
             return 'unknown question type';
         }

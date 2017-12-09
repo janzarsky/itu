@@ -33,111 +33,19 @@ class DatabaseSeeder extends Seeder
         $user2->save();
 
         // Animals
-        $a1 = new Animal;
-        $a1->name = 'Kůň domácí';
-        $a1->description = 'XXX je domestikované zvíře patřící mezi lichokopytníky. V minulosti se XXX používali především k přepravě. Od 20. století se na nich jezdí hlavně rekreačně.';
-        $a1->save();
+        $this->add_animal('Kůň domácí', 'XXX je domestikované zvíře patřící mezi lichokopytníky. V minulosti se XXX používali především k přepravě. Od 20. století se na nich jezdí hlavně rekreačně.');
 
-        $a2 = new Animal;
-        $a2->name = 'Kočka domácí';
-        $a2->description = 'XXX je domestikovaná forma XXX divoké, která je již po tisíciletí průvodcem člověka. Stejně jako její divoká příbuzná patří do podčeledi malé XXX, a je typickým zástupcem skupiny. Má pružné a svalnaté tělo, dokonale přizpůsobené lovu, ostré drápy a zuby a vynikající zrak, sluch a čich.';
-        $a2->save();
+        $this->add_animal('Kočka domácí', 'XXX je domestikovaná forma XXX divoké, která je již po tisíciletí průvodcem člověka. Stejně jako její divoká příbuzná patří do podčeledi malé XXX, a je typickým zástupcem skupiny. Má pružné a svalnaté tělo, dokonale přizpůsobené lovu, ostré drápy a zuby a vynikající zrak, sluch a čich.');
 
-        $a3 = new Animal;
-        $a3->name = 'Králík domácí';
-        $a3->description = 'XXX je domestikovaná forma evropského XXX divokého. XXX jsou domácím zvířetem, které lze poměrně snadno chovat v malochovech pro maso, bílé XXX maso obsahuje v porovnání s ostatními domácími zvířaty nejméně cholesterolu. Zakrslá plemena jsou pak oblíbeným zvířetem chovaným jako společníci, hlavně v městských bytech. Je oblíben převážně u malých dětí.';
-        $a3->save();
+        $this->add_animal('Králík domácí', 'XXX je domestikovaná forma evropského XXX divokého. XXX jsou domácím zvířetem, které lze poměrně snadno chovat v malochovech pro maso, bílé XXX maso obsahuje v porovnání s ostatními domácími zvířaty nejméně cholesterolu. Zakrslá plemena jsou pak oblíbeným zvířetem chovaným jako společníci, hlavně v městských bytech. Je oblíben převážně u malých dětí.');
 
         // Questions
-        $q = new Question;
-        $q->type = 'choose_name_from_description';
-        $q->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 1;
-        $qa->animal_id = 1;
-        $qa->position = 1;
-        $qa->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 1;
-        $qa->animal_id = 2;
-        $qa->position = 2;
-        $qa->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 1;
-        $qa->animal_id = 3;
-        $qa->position = 3;
-        $qa->save();
-
-        $q = new Question;
-        $q->type = 'choose_name_from_description';
-        $q->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 2;
-        $qa->animal_id = 3;
-        $qa->position = 1;
-        $qa->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 2;
-        $qa->animal_id = 2;
-        $qa->position = 2;
-        $qa->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 2;
-        $qa->animal_id = 1;
-        $qa->position = 3;
-        $qa->save();
-
-        $q = new Question;
-        $q->type = 'choose_name_from_description';
-        $q->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 3;
-        $qa->animal_id = 2;
-        $qa->position = 1;
-        $qa->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 3;
-        $qa->animal_id = 3;
-        $qa->position = 2;
-        $qa->save();
-
-        $qa = new QuestionAnimal;
-        $qa->question_id = 3;
-        $qa->animal_id = 1;
-        $qa->position = 3;
-        $qa->save();
+        $this->add_question('choose_name_from_description', [1, 2, 3]);
+        $this->add_question('choose_description_from_name', [3, 2, 1]);
+        $this->add_question('choose_name_from_description', [2, 3, 1]);
 
         // Tests
-        $t = new Test;
-        $t->name = 'Domácí zvířata';
-        $t->difficulty = 1;
-        $t->save();
-
-        $tq = new TestQuestion;
-        $tq->test_id = 1;
-        $tq->question_id = 1;
-        $tq->position = 1;
-        $tq->save();
-
-        $tq = new TestQuestion;
-        $tq->test_id = 1;
-        $tq->question_id = 2;
-        $tq->position = 2;
-        $tq->save();
-
-        $tq = new TestQuestion;
-        $tq->test_id = 1;
-        $tq->question_id = 3;
-        $tq->position = 3;
-        $tq->save();
+        $this->add_test('Domácí zvířata', 1, [1, 2, 3]);
 
         // Results
         $r = new Result;
@@ -145,5 +53,47 @@ class DatabaseSeeder extends Seeder
         $r->test_id = 1;
         $r->correct = 1;
         $r->save();
+    }
+
+    function add_animal($name, $description) {
+        $a = new Animal;
+        $a->name = $name;
+        $a->description = $description;
+        $a->save();
+    }
+    
+    function add_question($type, $animals) {
+        $q = new Question;
+        $q->type = $type;
+        $q->save();
+
+        $cnt = 1;
+
+        foreach ($animals as $a) {
+            $qa = new QuestionAnimal;
+            $qa->question_id = $q->id;
+            $qa->animal_id = $a;
+            $qa->position = $cnt;
+            $qa->save();
+        }
+    }
+
+    function add_test($name, $difficulty, $questions) {
+        $t = new Test;
+        $t->name = $name;
+        $t->difficulty = $difficulty;
+        $t->save();
+
+        $cnt = 1;
+
+        foreach ($questions as $q) {
+            $tq = new TestQuestion;
+            $tq->test_id = $t->id;
+            $tq->question_id = $q;
+            $tq->position = $cnt;
+            $tq->save();
+
+            $cnt++;
+        }
     }
 }
