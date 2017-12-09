@@ -22,12 +22,12 @@
             @if (isset($finish))
                 <a href="{{ route('tests.finish',
                                   ['id' => $test->id]) }}"
-                    class="btn btn-primary btn-large float-right">Dokončit test</a>
+                    class="btn btn-primary btn-lg float-right">Dokončit test</a>
             @elseif (isset($next))
                 <a href="{{ route('tests.question',
                                   ['id' => $next->test_id,
                                    'question_num' => $next->position]) }}"
-                    class="btn btn-primary btn-large float-right">Další otázka</a>
+                    class="btn btn-primary btn-lg float-right">Další otázka</a>
             @endif
         </div>
     </div>
