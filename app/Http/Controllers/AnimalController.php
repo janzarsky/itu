@@ -10,6 +10,8 @@ class AnimalController extends Controller
 {
     public function index()
     {
-        return 'animals';
+        $vals['animals'] = \App\Animal::all();
+
+        return view('animals.index', $vals);
     }
 }

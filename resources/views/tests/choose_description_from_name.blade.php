@@ -22,10 +22,10 @@
 
 {{ Form::open(['routes' => 'tests.answer', 'method' => 'get']) }}
 
-<div class="row mb-3">
-@foreach ($shuffled as $a)
-    <div class="col-md-4">
-        <div class="form-check answer-form-check">
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card-deck questions">
+        @foreach ($shuffled as $a)
             <input class="form-check-input" type="radio" name="answer"
                 id="answerRadio{{ $a->id }}" value="{{ $a->id }}">
             <label class="card" for="answerRadio{{ $a->id }}">
@@ -33,9 +33,9 @@
                     {{ $a->description }}
                 </div>
             </label>
+        @endforeach
         </div>
     </div>
-@endforeach
 </div>
 
 <div class="row">
