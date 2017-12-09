@@ -6,6 +6,9 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
+                <h3 class="card-title">
+                    ?
+                </h3>
                 {{ $animals[0]->description }}
             </div>
         </div>
@@ -13,36 +16,33 @@
 </div>
 
 @php
-    if ($animal_id === -1) {
-        $shuffled = $animals->shuffle();
-    }
-    else {
-        $shuffled = $animals;
-    }
+    $shuffled = $animals->shuffle();
 @endphp
 
-<div class="row">
+{{ Form::open(['routes' => 'tests.answer', 'method' => 'get']) }}
 
+<div class="row mb-3">
 @foreach ($shuffled as $a)
-<div class="col-md-4">
-    <a href="{{ route('tests.answer', ['id' => $test->id,
-             'question_num' => $question->position,
-             'animal_id' => $a->id]) }}">
-        <div class="card">
-            <div class="card-body">
-            @if ($animal_id === -1)
+    <div class="col-md-4">
+        <div class="form-check answer-form-check">
+            <input class="form-check-input" type="radio" name="answer"
+                id="answerRadio{{ $a->id }}" value="{{ $a->id }}">
+            <label class="card" for="answerRadio{{ $a->id }}">
+                <div class="card-body large-text">
                     {{ $a->name }}
-            @elseif ($loop->first)
-                Správná odpověď: {{ $a->name }}
-            @else
-                {{ $a->name }}
-            @endif
-            </div>
+                </div>
+            </label>
         </div>
-    </a>
-</div>
+    </div>
 @endforeach
-
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <button type="submit" class="float-right btn btn-primary btn-lg">Odpovědět</button>
+    </div>
+</div>
+
+{{ Form::close() }}
 
 @endsection

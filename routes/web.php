@@ -18,8 +18,6 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'TestController@take']);
     Route::get('/tests/take/{id}/question/{question_num}',
         ['as' => 'tests.question', 'uses' => 'TestController@question']);
-    Route::get('/tests/take/{id}/question/{question_num}/answer/{animal_id}',
-        ['as' => 'tests.answer', 'uses' => 'TestController@question']);
     Route::get('/tests/finish/{id}',
         ['as' => 'tests.finish', 'uses' => 'TestController@finish']);
 });
