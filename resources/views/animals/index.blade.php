@@ -10,6 +10,8 @@
         <div class="card-columns">
         @foreach ($animals as $a)
             <div class="card">
+                <img class="card-img-top" src="{{ $a->image_url }}"
+                    alt="{{ $a->name }}">
                 <div class="card-body">
                     <h4 class="card-title">
                         {{ $a->name }}

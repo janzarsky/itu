@@ -17,6 +17,7 @@ class CreateAnimalsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->longText('description');
+            $table->string('image_url', 2083);
             $table->timestamps();
             $table->softDeletes();
         });

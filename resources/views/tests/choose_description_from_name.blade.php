@@ -10,7 +10,7 @@
                     {{ $animals[0]->name }}
                 </h3>
 
-                ?
+                <span class="large-text">?</span>
             </div>
         </div>
     </div>

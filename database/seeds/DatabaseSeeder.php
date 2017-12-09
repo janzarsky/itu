@@ -33,19 +33,31 @@ class DatabaseSeeder extends Seeder
         $user2->save();
 
         // Animals
-        $this->add_animal('Kůň domácí', 'XXX je domestikované zvíře patřící mezi lichokopytníky. V minulosti se XXX používali především k přepravě. Od 20. století se na nich jezdí hlavně rekreačně.');
+        $this->add_animal('Kůň domácí', 'Domestikované zvíře patřící mezi lichokopytníky. V minulosti se používali především k přepravě.', 'https://upload.wikimedia.org/wikipedia/commons/d/de/Nokota_Horses_cropped.jpg');
 
-        $this->add_animal('Kočka domácí', 'XXX je domestikovaná forma XXX divoké, která je již po tisíciletí průvodcem člověka. Stejně jako její divoká příbuzná patří do podčeledi malé XXX, a je typickým zástupcem skupiny. Má pružné a svalnaté tělo, dokonale přizpůsobené lovu, ostré drápy a zuby a vynikající zrak, sluch a čich.');
+        $this->add_animal('Kočka domácí', 'Je již po tisíciletí průvodcem člověka. Má pružné a svalnaté tělo, dokonale přizpůsobené lovu, ostré drápy a zuby a vynikající zrak, sluch a čich.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Collage_of_Six_Cats-01.jpg/604px-Collage_of_Six_Cats-01.jpg');
 
-        $this->add_animal('Králík domácí', 'XXX je domestikovaná forma evropského XXX divokého. XXX jsou domácím zvířetem, které lze poměrně snadno chovat v malochovech pro maso, bílé XXX maso obsahuje v porovnání s ostatními domácími zvířaty nejméně cholesterolu. Zakrslá plemena jsou pak oblíbeným zvířetem chovaným jako společníci, hlavně v městských bytech. Je oblíben převážně u malých dětí.');
+        $this->add_animal('Králík domácí', 'Domácí zvíře, které lze poměrně snadno chovat v malochovech pro maso, jeho maso obsahuje v porovnání s ostatními domácími zvířaty nejméně cholesterolu. Zakrslá plemena jsou pak oblíbeným zvířetem chovaným jako společníci, hlavně v městských bytech.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kaninchen3.jpg/640px-Kaninchen3.jpg');
+
+        $this->add_animal('Pes domácí', 'Největší domestikovaná šelma a jedno z nejstarších domestikovaných zvířat vůbec, provázející člověka minimálně 14 tisíc let. Obecně se předpokládá, že se jedná o zdomácnělého a umělým výběrem změněného vlka obecného.', 'https://upload.wikimedia.org/wikipedia/commons/2/28/Golden-retriever-1.jpg');
+
+        $this->add_animal('Prase domácí', 'Je to významné domácí zvíře, chované hospodářsky především pro maso.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Sus_scrofa_scrofa.jpg/640px-Sus_scrofa_scrofa.jpg');
+
+        $this->add_animal('Ovce domácí', 'Malým domestikovaný přežvýkavec, chovaným hlavně pro vlnu a mléko, zčásti také pro maso. Protože nejsou tak náročné jako skot, chovají se i v horských nebo aridních oblastech.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ovce-tabor.jpg/640px-Ovce-tabor.jpg');
 
         // Questions
         $this->add_question('choose_name_from_description', [1, 2, 3]);
-        $this->add_question('choose_description_from_name', [3, 2, 1]);
-        $this->add_question('choose_name_from_description', [2, 3, 1]);
+        $this->add_question('choose_description_from_name', [3, 2, 4]);
+        $this->add_question('choose_name_from_description', [2, 6, 1]);
+        $this->add_question('choose_description_from_name', [5, 1, 6]);
+
+        $this->add_question('choose_name_from_description', [2, 3, 4]);
+        $this->add_question('choose_name_from_description', [3, 2, 4]);
+        $this->add_question('choose_description_from_name', [4, 3, 2]);
 
         // Tests
-        $this->add_test('Domácí zvířata', 1, [1, 2, 3]);
+        $this->add_test('Domácí zvířata', 1, [1, 2, 3, 4]);
+        $this->add_test('Malá zvířata', 1, [5, 6, 7]);
 
         // Results
         $r = new Result;
@@ -55,10 +67,11 @@ class DatabaseSeeder extends Seeder
         $r->save();
     }
 
-    function add_animal($name, $description) {
+    function add_animal($name, $description, $image_url) {
         $a = new Animal;
         $a->name = $name;
         $a->description = $description;
+        $a->image_url = $image_url;
         $a->save();
     }
     

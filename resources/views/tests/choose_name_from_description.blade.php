@@ -9,7 +9,7 @@
                 <h3 class="card-title">
                     ?
                 </h3>
-                {{ $animals[0]->description }}
+                <span class="large-text">{{ $animals[0]->description }}</span>
             </div>
         </div>
     </div>
