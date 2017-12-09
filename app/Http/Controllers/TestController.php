@@ -26,6 +26,9 @@ class TestController extends Controller
         if ($request->input('answer', 0) !== 0)
             return $this->answer($test_id, $question_num, $request->input('answer'));
 
+        $vals['question_count'] = \App\TestQuestion::where('test_id', $test_id)
+            ->get()->count();
+
         // save progress
         $result = \App\Result::where('test_id', $test_id)
             ->where('user_id', Auth::user()->id)
@@ -37,6 +40,9 @@ class TestController extends Controller
             $result->test_id = $test_id;
             $result->user_id = Auth::user()->id;
             $result->save();
+        }
+        else if ($question_num > $vals['question_count']) {
+            return Redirect::route('tests.finish', ['test_id' => $test_id]);
         }
         else if ($result->progress != $question_num - 1) {
             return Redirect::route('tests.question', ['test_id' => $test_id,
@@ -55,9 +61,6 @@ class TestController extends Controller
             ->join('animals', 'animals.id', 'questions_animals.animal_id')
             ->orderBy('position')
             ->get();
-
-        $vals['question_count'] = \App\TestQuestion::where('test_id', $test_id)
-            ->get()->count();
 
         switch ($vals['question']->type) {
         case 'choose_name_from_description':
