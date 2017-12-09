@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -24,6 +25,23 @@ class TestController extends Controller
     {
         if ($request->input('answer', 0) !== 0)
             return $this->answer($test_id, $question_num, $request->input('answer'));
+
+        // save progress
+        $result = \App\Result::where('test_id', $test_id)
+            ->where('user_id', Auth::user()->id)
+            ->where('completed', false)
+            ->get()->first();
+
+        if (!isset($result)) {
+            $result = new \App\Result;
+            $result->test_id = $test_id;
+            $result->user_id = Auth::user()->id;
+            $result->save();
+        }
+        else if ($result->progress != $question_num - 1) {
+            return Redirect::route('tests.question', ['test_id' => $test_id,
+                'question_num' => $result->progress + 1]);
+        }
 
         $vals['test'] = \App\Test::find($test_id);
 
@@ -51,6 +69,20 @@ class TestController extends Controller
 
     public function answer($test_id, $question_num, $animal_id)
     {
+        // save progress
+        $result = \App\Result::where('test_id', $test_id)
+            ->where('user_id', Auth::user()->id)
+            ->where('completed', false)
+            ->get()->first();
+
+        if (!isset($result)) {
+            return Redirect::route('tests.question', ['test_id' => $test_id,
+                'question_num' => 1]);
+        }
+        else if ($result->progress != $question_num - 1) {
+            return Redirect::route('tests.question', ['test_id' => $test_id,
+                'question_num' => $result->progress + 1]);
+        }
         $vals['test'] = \App\Test::find($test_id);
 
         $vals['question'] = \App\TestQuestion::where('test_id', $test_id)
@@ -77,6 +109,15 @@ class TestController extends Controller
             $vals['finish'] = true;
         }
 
+        // save results
+        $result->progress++;
+
+        if ($animal_id == $vals['animals'][0]->id) {
+            $result->correct++;
+        }
+
+        $result->save();
+
         switch ($vals['question']->type) {
         case 'choose_name_from_description':
             return view('tests.choose_name_from_description_answer', $vals);
@@ -88,6 +129,25 @@ class TestController extends Controller
     public function finish($test_id) {
         $vals['test'] = \App\Test::find($test_id);
 
-        return view('tests.finish', $vals);
+        $result = \App\Result::where('test_id', $test_id)
+            ->where('user_id', Auth::user()->id)
+            ->where('completed', false)
+            ->get()->first();
+
+        $vals['question_count'] = \App\TestQuestion::where('test_id', $test_id)
+            ->get()->count();
+
+        // save test result as completed
+        if (isset($result)) {
+            $result->completed = true;
+            $result->save();
+
+            $vals['result'] = $result;
+
+            return view('tests.finish', $vals);
+        }
+        else {
+            return Redirect::route('tests');
+        }
     }
 }

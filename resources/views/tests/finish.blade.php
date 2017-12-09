@@ -1,25 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container main-container">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2>Test {{ $test->name }} dokončen</h2>
+            
+            <p>Zodpovězeno správně {{ $result->correct }} z {{ $question_count }} otázek.</p>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Test {{ $test->name }} dokončen
-                </div>
-
-                <div class="panel-body">
-                    <h3>Výsledky:</h3>
-                    
-                    <p>TODO</p>
-
-                    <p>
-                        <a href="{{ route('tests') }}"
-                            class="btn btn-primary">Zpět k testům</a>
-                    </p>
-                </div>
-            </div>
+            <a href="{{ route('tests') }}"
+                class="btn btn-primary">Zpět k testům</a>
         </div>
     </div>
 </div>

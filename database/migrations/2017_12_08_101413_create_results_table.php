@@ -17,7 +17,9 @@ class CreateResultsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('test_id')->unsigned();
-            $table->integer('correct');
+            $table->boolean('completed')->default(false);
+            $table->integer('progress')->default(0);
+            $table->integer('correct')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
