@@ -20,6 +20,9 @@ Route::group(['middleware' => 'auth'], function () {
         ['as' => 'tests.question', 'uses' => 'TestController@question']);
     Route::get('/tests/finish/{id}',
         ['as' => 'tests.finish', 'uses' => 'TestController@finish']);
+
+    Route::get('/animals', ['as' => 'animals',
+        'uses' => 'AnimalController@index']);
 });
 
 //Route::group(['middleware' => ['auth', 'admin']], function() {
@@ -27,9 +30,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function() { return Redirect::route('tests'); });
 
