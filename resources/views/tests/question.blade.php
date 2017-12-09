@@ -2,9 +2,16 @@
 
 @section('content')
 <div class="container main-container">
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-md-12">
-            <h2>Test {{ $test->name }}, otázka č. {{ $question->position }}</h2>
+            <h2>{{ $test->name }}</h2>
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                    style="width: {{ 100*$question->position/$question_count }}%;">
+                    {{ $question->position }}/{{ $question_count }}
+                </div>
+            </div>
         </div>
     </div>
 

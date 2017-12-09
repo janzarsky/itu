@@ -30,7 +30,7 @@
                 </div>
             @endif
         @else
-            <div class="card-body large-text">
+            <div class="card-body large-text text-secondary">
                 {{ $a->name }}
             </div>
         @endif

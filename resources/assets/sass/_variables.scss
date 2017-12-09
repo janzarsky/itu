@@ -28,3 +28,8 @@ $info:          $blue;
 .bg-green  { background-color: $green ; }
 .bg-teal   { background-color: $teal  ; }
 .bg-cyan   { background-color: $cyan  ; }
+
+// Progress bar
+
+$progress-height:                   2rem;
+$progress-font-size:                $font-size-base;

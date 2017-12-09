@@ -38,6 +38,9 @@ class TestController extends Controller
             ->orderBy('position')
             ->get();
 
+        $vals['question_count'] = \App\TestQuestion::where('test_id', $test_id)
+            ->get()->count();
+
         switch ($vals['question']->type) {
         case 'choose_name_from_description':
             return view('tests.choose_name_from_description', $vals);
@@ -62,6 +65,9 @@ class TestController extends Controller
             ->get();
 
         $vals['animal_id'] = $animal_id;
+
+        $vals['question_count'] = \App\TestQuestion::where('test_id', $test_id)
+            ->get()->count();
 
         $vals['next'] = \App\TestQuestion::where('test_id', $test_id)
             ->where('position', $question_num + 1)
