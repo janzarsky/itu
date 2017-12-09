@@ -46,14 +46,16 @@ class DatabaseSeeder extends Seeder
         $this->add_animal('Ovce domácí', 'Malým domestikovaný přežvýkavec, chovaným hlavně pro vlnu a mléko, zčásti také pro maso. Protože nejsou tak náročné jako skot, chovají se i v horských nebo aridních oblastech.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Ovce-tabor.jpg/640px-Ovce-tabor.jpg');
 
         // Questions
-        $this->add_question('choose_name_from_description', [1, 2, 3]);
-        $this->add_question('choose_description_from_name', [3, 2, 4]);
-        $this->add_question('choose_name_from_description', [2, 6, 1]);
-        $this->add_question('choose_description_from_name', [5, 1, 6]);
+        $this->add_question('name', 'description', [1, 2, 3]);
+        $this->add_question('description', 'name', [3, 1, 4]);
+        $this->add_question('image', 'name', [5, 1, 2]);
+        $this->add_question('name', 'image', [2, 6, 1]);
+        $this->add_question('description', 'image', [4, 2, 4]);
+        $this->add_question('image', 'description', [3, 4, 6]);
 
-        $this->add_question('choose_name_from_description', [2, 3, 4]);
-        $this->add_question('choose_name_from_description', [3, 2, 4]);
-        $this->add_question('choose_description_from_name', [4, 3, 2]);
+        $this->add_question('name', 'description', [2, 3, 4]);
+        $this->add_question('name', 'description', [3, 2, 4]);
+        $this->add_question('description', 'name', [4, 3, 2]);
 
         // Tests
         $this->add_test('Domácí zvířata', 1, [1, 2, 3, 4]);
@@ -75,9 +77,10 @@ class DatabaseSeeder extends Seeder
         $a->save();
     }
     
-    function add_question($type, $animals) {
+    function add_question($question_type, $answer_type, $animals) {
         $q = new Question;
-        $q->type = $type;
+        $q->question_type = $question_type;
+        $q->answer_type = $answer_type;
         $q->save();
 
         $cnt = 1;
