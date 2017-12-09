@@ -75,6 +75,8 @@ class DatabaseSeeder extends Seeder
             $qa->animal_id = $a;
             $qa->position = $cnt;
             $qa->save();
+
+            $cnt++;
         }
     }
 
