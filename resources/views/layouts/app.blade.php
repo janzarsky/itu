@@ -78,6 +78,16 @@
     </nav>
 
     @yield('content')
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">V rámci předmětu Tvorba uživatelských
+                rozhraní na Fakultě informačních technologií Vysokého učení
+                technického v Brně vytvořil v roce 2017 Jan Žárský
+                <a href="mailto:xzarsk03@stud.fit.vutbr.cz"
+                target="_blank">xzarsk03@stud.fit.vutbr.cz</a></span>
+        </div>
+    </footer>
 </div>
 
 <!-- Scripts -->
