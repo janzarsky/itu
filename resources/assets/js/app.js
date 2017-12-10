@@ -18,5 +18,5 @@ window.Vue = require('vue');
 Vue.component('app-scripts', require('./components/AppScripts.vue'));
 
 const app = new Vue({
-    el: 'body'
+    el: '#app'
 });

@@ -12,21 +12,29 @@
             <h2>Procvičování</h2>
         </div>
         
-        <div class="card-columns">
-        @foreach ($animals as $a)
-            <div class="card">
-                <img class="card-img-top" src="{{ $a->image_url }}"
-                    alt="{{ $a->name }}">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        {{ $a->name }}
-                    </h4>
-                    <p class="card-text">
-                        {{ $a->description }}
-                    </p>
+        <div class="col-md-12">
+            <div class="card-columns">
+            @foreach ($animals as $a)
+                <div class="card">
+                    <img class="card-img-top" src="{{ $a->image_url }}"
+                        alt="{{ $a->name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            {{ $a->name }}
+                        </h4>
+                        <p class="card-text">
+                            {{ $a->description }}
+                        </p>
+                        <a href="https://cs.wikipedia.org/wiki/{{ $a->name }}"
+                            class="btn btn-outline-primary">
+                            Wikipedie</a>
+                        <a href="https://www.google.cz/search?q={{ $a->name }}"
+                            class="btn btn-outline-primary">
+                            Google</a>
+                    </div>
                 </div>
+            @endforeach
             </div>
-        @endforeach
         </div>
     </div>
 </div>
