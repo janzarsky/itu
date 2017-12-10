@@ -146,6 +146,9 @@ class DatabaseSeeder extends Seeder
         $this->add_test('Malá zvířata', 1, [7, 8, 9]);
         $this->add_test('Všechna zvířata', 1, [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]);
 
+        $this->add_test('Vysoká zvěř', 1, [17, 18, 19]);
+        $this->add_test('Hlodavci', 1, [21, 22, 23]);
+
         // Results
         $this->add_result(1, 1, 1);
         $this->add_result(1, 1, 2);
