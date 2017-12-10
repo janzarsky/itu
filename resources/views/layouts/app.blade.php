@@ -47,9 +47,9 @@
                 <ul class="navbar-nav">
                     @if (Auth::guest())
                         <li class="nav-item"><a href="{{ route('login') }}"
-                            class="nav-link">Login</a></li>
+                            class="nav-link">Přihlásit se</a></li>
                         <li class="nav-item"><a href="{{ route('register') }}"
-                            class="nav-link">Register</a></li>
+                            class="nav-link">Registrovat</a></li>
                     @else
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle"
@@ -61,7 +61,7 @@
                                 aria-labelledby="navbarDropdownMenuLink">
                                 <a href="{{ route('logout') }}" class="dropdown-item"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Odhlásit se
                                 </a>
 
                                 <form id="logout-form"
