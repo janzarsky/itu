@@ -3,6 +3,13 @@
 @section('question')
 
 <div class="row mb-5">
+    <div class="col-md-12 mb-4">
+    @if ($animals->first()->id == $animal_id)
+        <h3 class="text-success">Správně!</h3>
+    @else
+        <h3 class="text-danger">Špatně!</h3>
+    @endif
+    </div>
     <div class="col-md-12">
         <div class="card-deck">
             <div class="card border-success">

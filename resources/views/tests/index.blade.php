@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container-fluid">
+    <div class="row page-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ad/Baby_Hedgehog.jpg');
+    background-position: center 45%;"></div>
+</div>
+
 <div class="container main-container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-3">
             <h2>Testy</h2>
         </div>
         

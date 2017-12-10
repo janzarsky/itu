@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container-fluid">
+    <div class="row page-photo" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/f6/Pembroke_Welsh_Corgi_Puppy.jpg');
+    background-position: center 38%;"></div>
+</div>
+
 <div class="container main-container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-3">
             <h2>Zvířata</h2>
         </div>
         
