@@ -16,3 +16,26 @@
 .large-text {
     font-size: $font-size-lg;
 }
+
+.card.image-limit-height {
+    align-items: center;
+    
+    img {
+        height: 250px;
+        width: auto;
+    }
+}
+
+.image-crop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 250px;
+
+    img {
+        flex-shrink: 0;
+        min-width: 101%;
+        min-height: 101%;
+    }
+}

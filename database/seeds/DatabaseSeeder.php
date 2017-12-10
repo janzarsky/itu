@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
 
         $this->add_animal('Kočka domácí', 'Je již po tisíciletí průvodcem člověka. Má pružné a svalnaté tělo, dokonale přizpůsobené lovu, ostré drápy a zuby a vynikající zrak, sluch a čich.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Collage_of_Six_Cats-01.jpg/604px-Collage_of_Six_Cats-01.jpg');
 
-        $this->add_animal('Králík domácí', 'Domácí zvíře, které lze poměrně snadno chovat v malochovech pro maso, jeho maso obsahuje v porovnání s ostatními domácími zvířaty nejméně cholesterolu. Zakrslá plemena jsou pak oblíbeným zvířetem chovaným jako společníci, hlavně v městských bytech.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kaninchen3.jpg/640px-Kaninchen3.jpg');
+        $this->add_animal('Králík domácí', 'Domácí zvíře, které lze poměrně snadno chovat v malochovech pro maso. Zakrslá plemena jsou pak oblíbeným zvířetem chovaným jako společníci, hlavně v městských bytech.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kaninchen3.jpg/640px-Kaninchen3.jpg');
 
         $this->add_animal('Pes domácí', 'Největší domestikovaná šelma a jedno z nejstarších domestikovaných zvířat vůbec, provázející člověka minimálně 14 tisíc let. Obecně se předpokládá, že se jedná o zdomácnělého a umělým výběrem změněného vlka obecného.', 'https://upload.wikimedia.org/wikipedia/commons/2/28/Golden-retriever-1.jpg');
 
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->add_question('description', 'name', [3, 1, 4]);
         $this->add_question('image', 'name', [5, 1, 2]);
         $this->add_question('name', 'image', [2, 6, 1]);
-        $this->add_question('description', 'image', [4, 2, 4]);
+        $this->add_question('description', 'image', [3, 2, 4]);
         $this->add_question('image', 'description', [3, 4, 6]);
 
         $this->add_question('name', 'description', [2, 3, 4]);
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
         $this->add_question('description', 'name', [4, 3, 2]);
 
         // Tests
-        $this->add_test('Domácí zvířata', 1, [1, 2, 3, 4]);
+        $this->add_test('Domácí zvířata', 1, [1, 2, 3, 4, 5, 6]);
         $this->add_test('Malá zvířata', 1, [5, 6, 7]);
 
         // Results
