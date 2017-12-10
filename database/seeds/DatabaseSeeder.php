@@ -19,18 +19,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Users
-        $user1 = new User;
-        $user1->name = 'Batman the admin';
-        $user1->email = 'batman@asdf.cz';
-        $user1->password = Hash::make('asdf');
-        $user1->is_admin = true;
-        $user1->save();
-
-        $user2 = new User;
-        $user2->name = 'Pepa the user';
-        $user2->email = 'pepa@asdf.cz';
-        $user2->password = Hash::make('asdf');
-        $user2->save();
+        $user = new User;
+        $user->name = 'Pepa';
+        $user->email = 'pepa@asdf.cz';
+        $user->password = Hash::make('asdf');
+        $user->save();
 
         // Animals
         $this->add_animal('Kůň domácí', 'Domestikované zvíře patřící mezi lichokopytníky. V minulosti se používali především k přepravě.', 'https://upload.wikimedia.org/wikipedia/commons/d/de/Nokota_Horses_cropped.jpg');
@@ -154,11 +147,13 @@ class DatabaseSeeder extends Seeder
         $this->add_test('Všechna zvířata', 1, [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]);
 
         // Results
-        $r = new Result;
-        $r->user_id = 2;
-        $r->test_id = 1;
-        $r->correct = 1;
-        $r->save();
+        $this->add_result(1, 1, 1);
+        $this->add_result(1, 1, 2);
+        $this->add_result(1, 1, 1);
+        $this->add_result(1, 1, 3);
+
+        $this->add_result(1, 2, 3);
+        $this->add_result(1, 2, 2);
     }
 
     function add_animal($name, $description, $image_url) {
@@ -205,5 +200,14 @@ class DatabaseSeeder extends Seeder
 
             $cnt++;
         }
+    }
+
+    function add_result($user_id, $test_id, $correct) {
+        $r = new Result;
+        $r->user_id = $user_id;
+        $r->test_id = $test_id;
+        $r->correct = $correct;
+        $r->completed = true;
+        $r->save();
     }
 }

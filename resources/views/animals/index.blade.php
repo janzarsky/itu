@@ -9,7 +9,7 @@
 <div class="container main-container">
     <div class="row">
         <div class="col-md-12 mb-3">
-            <h2>Zvířata</h2>
+            <h2>Procvičování</h2>
         </div>
         
         <div class="card-columns">

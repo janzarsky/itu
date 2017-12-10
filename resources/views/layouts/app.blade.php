@@ -28,7 +28,10 @@
                             class="nav-link">Testy</a></li>
                     <li class="nav-item {{ (Request::is('animals')) ? 'active':'' }}">
                         <a href="{{ route('animals') }}"
-                            class="nav-link">Zvířata</a></li>
+                            class="nav-link">Procvičování</a></li>
+                    <li class="nav-item {{ (Request::is('stats')) ? 'active':'' }}">
+                        <a href="{{ route('stats') }}"
+                            class="nav-link">Moje statistiky</a></li>
                 @endif
                 </ul>
             </div>

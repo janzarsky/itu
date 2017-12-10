@@ -23,10 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/animals', ['as' => 'animals',
         'uses' => 'AnimalController@index']);
-});
 
-//Route::group(['middleware' => ['auth', 'admin']], function() {
-//});
+    Route::get('/stats', ['as' => 'stats',
+        'uses' => 'StatController@index']);
+});
 
 Auth::routes();
 
