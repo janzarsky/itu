@@ -85,7 +85,11 @@
                 V rámci předmětu Tvorba uživatelských
                 rozhraní na FIT VUT v Brně vytvořil v roce 2017 Jan Žárský
                 (<a href="mailto:xzarsk03@stud.fit.vutbr.cz"
-                target="_blank">xzarsk03@stud.fit.vutbr.cz</a>)</span>
+                target="_blank">xzarsk03@stud.fit.vutbr.cz</a>)
+                a Robin Vysloužil
+                (<a href="mailto:xvyslo05@stud.fit.vutbr.cz"
+                target="_blank">xvyslo05@stud.fit.vutbr.cz</a>)
+            </span>
         </div>
     </footer>
 </div>
