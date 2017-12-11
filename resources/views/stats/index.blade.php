@@ -12,31 +12,29 @@
             <h2>Moje statistiky</h2>
         </div>
         
-        <div class="col-md-12">
-            <div class="card-deck">
-            @foreach ($tests as $t)
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            {{ $t->name }}
-                        </h4>
-                        <p class="card-text">
-                            Počet pokusů: {{ $t->attempts }}<br/>
-                            @if ($t->attempts > 0)
-                                Průměrná úspěšnost: {{ $t->average }} %
-                            @else
-                                &nbsp;
-                            @endif
-                        </p>
-                        <p class="card-text">
-                            <a href="{{ route('tests.take', ['id' => $t->id]) }}"
-                                class="btn btn-lg btn-primary">Spustit test</a>
-                        </p>
-                    </div>
+    @foreach ($tests as $t)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{ $t->name }}
+                    </h4>
+                    <p class="card-text">
+                        Počet pokusů: {{ $t->attempts }}<br/>
+                        @if ($t->attempts > 0)
+                            Průměrná úspěšnost: {{ $t->average }} %
+                        @else
+                            &nbsp;
+                        @endif
+                    </p>
+                    <p class="card-text">
+                        <a href="{{ route('tests.take', ['id' => $t->id]) }}"
+                            class="btn btn-lg btn-primary">Spustit test</a>
+                    </p>
                 </div>
-            @endforeach
             </div>
         </div>
+    @endforeach
     </div>
 </div>
 @endsection
